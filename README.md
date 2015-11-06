@@ -1,4 +1,4 @@
-# CSC 591 007 - Homework 3  
+# DevOps (CSC 591 007) - Homework 3  
 #### Name: Aneesh Kher
 #### Unity ID: aakher  
 
