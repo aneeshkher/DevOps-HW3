@@ -32,6 +32,7 @@ In order to run an additional express server, a file identical to the `main3000.
 
 #### Proxy
 A third server was run, which acted as a proxy server and load balancer for the two running servers. This server was run on port 80, and redirected all requests to either of the first two servers. Whenever this server received a request, by typing `localhost` in the browser, it would choose one out of the two other servers, and send this request to it.  
+
 Each server was chosen alternately. This was achieved by using the `rpoplpush` command in redis. This command would pop one element from list 1, and push it into list two. When a request would come to the proxy server, it would call `rpoplpush`, and redis would hand it one value, either 3000 or 3001. Based on this, it would forward the request to the server listening on 3000, and 3001 respectively. After sending the request, express would call `rpoplpush` again, and put the just used value at the back of the list. In this way, each server was chosen alternately.  
 
 ---
