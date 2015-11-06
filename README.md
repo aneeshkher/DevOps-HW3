@@ -38,7 +38,7 @@ Each server was chosen alternately. This was achieved by using the `rpoplpush` c
 
 
 ## Screencast link  
-Please [click here](https://youtu.be/uxE1HdNwbpY) to view the YouTube link. You will be redirected to YouTube.  
+Please [click here](https://youtu.be/uxE1HdNwbpY) to view the YouTube video.  
 
 ---
 
