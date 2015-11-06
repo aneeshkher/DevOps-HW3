@@ -6,6 +6,20 @@ var client = redis.createClient(6379, '127.0.0.1', {})
 
 var proxy = httpProxy.createProxyServer({});
 
+var push = function() {
+	client.del("primary", function(err1, val1) {
+		client.del("secondary", function(err2, val2) {
+			client.lpush("primary", 3001, function(err3, val3) {
+				client.lpush("primary", 3000, function(err4, val4) {
+					console.log("Created queue for load balancing");
+				});
+			});
+		});
+	});
+}
+
+push();
+
 var server = http.createServer(function(req, res) {
 	var myValue;
 	client.rpoplpush("primary","secondary", function(err, value) {
